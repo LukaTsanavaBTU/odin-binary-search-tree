@@ -24,23 +24,23 @@ export default class Tree {
         const sorted = sortArray(array);
         return recursiveBuild(sorted, 0, sorted.length - 1);
     }
-    // insert(value) {
-    //     let previousRoot;
-    //     let currentRoot = this.root;
-    //     const newNode = new Node(value);
-    //     while (currentRoot) {
-    //         if (value > currentRoot.data) {
-    //             previousRoot = currentRoot;
-    //             currentRoot = currentRoot.right;
-    //         } else {
-    //             previousRoot = currentRoot;
-    //             currentRoot = currentRoot.left;
-    //         }
-    //     }
-    //     if (value > previousRoot.data) {
-    //         previousRoot.right = newNode;
-    //     } else {
-    //         previousRoot.left = newNode;
-    //     }
-    // }
+    insert(value) {
+        let previousRoot;
+        let currentRoot = this.root;
+        const newNode = new Node(value);
+        while (currentRoot) {
+            if (value > currentRoot.data) {
+                previousRoot = currentRoot;
+                currentRoot = currentRoot.right;
+            } else {
+                previousRoot = currentRoot;
+                currentRoot = currentRoot.left;
+            }
+        }
+        if (value > previousRoot.data) {
+            previousRoot.right = newNode;
+        } else {
+            previousRoot.left = newNode;
+        }
+    }
 }
