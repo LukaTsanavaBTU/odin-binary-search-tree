@@ -43,4 +43,41 @@ export default class Tree {
             previousRoot.left = newNode;
         }
     }
+    deleteItem(value) {
+        let previousRoot;
+        let currentRoot = this.root;
+        while (value !== currentRoot.data) {
+            if (value > currentRoot.data) {
+                previousRoot = currentRoot;
+                currentRoot = currentRoot.right;
+            } else {
+                previousRoot = currentRoot;
+                currentRoot = currentRoot.left;
+            }
+        }
+        if (!currentRoot.left && !currentRoot.right) {
+            if (value < previousRoot.data) {
+                previousRoot.left = null;
+            } else {
+                previousRoot.right = null;
+            }
+        } else if (!!currentRoot.left !==  !!currentRoot.right) {
+            if (value < previousRoot.data) {
+                previousRoot.left = currentRoot.left ? currentRoot.left : currentRoot.right;
+            } else {
+                previousRoot.right = currentRoot.left ? currentRoot.left : currentRoot.right;
+            }
+        } else {
+            let replacementRoot = currentRoot.right;
+            while (replacementRoot.left) {
+                replacementRoot = replacementRoot.left;
+            }
+            const replacementValue = replacementRoot.data;
+            this.deleteItem(replacementValue);
+            currentRoot.data = replacementValue;
+        }
+    }
+    find (value) {
+        
+    }
 }
