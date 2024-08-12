@@ -91,4 +91,21 @@ export default class Tree {
         }
         return null;
     }
+    levelOrder(callback) {
+        if (!callback) {
+            throw new Error("A callback function is required");
+        }
+        let currentRoot = this.root;
+        const queue = [currentRoot];
+        while (queue.length !== 0) {
+            currentRoot = queue.shift();
+            if (currentRoot.left) {
+                queue.push(currentRoot.left); 
+            }
+            if (currentRoot.right) {
+                queue.push(currentRoot.right);
+            }
+            callback(currentRoot);
+        }
+    }
 }
