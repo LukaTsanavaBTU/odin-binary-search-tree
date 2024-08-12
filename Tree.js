@@ -77,18 +77,18 @@ export default class Tree {
             currentRoot.data = replacementValue;
         }
     }
-    // find (value) {
-    //     let currentRoot = this.root;
-    //     while (currentRoot) {
-    //         if (value === currentRoot.data) {
-    //             return currentRoot;
-    //         }
-    //         if (value > currentRoot.data) {
-    //             currentRoot = currentRoot.right;
-    //         } else {
-    //             currentRoot = currentRoot.left;
-    //         }
-    //     }
-    //     return null;
-    // }
+    find (value) {
+        let currentRoot = this.root;
+        while (currentRoot) {
+            if (value === currentRoot.data) {
+                return currentRoot;
+            }
+            if (value > currentRoot.data) {
+                currentRoot = currentRoot.right;
+            } else {
+                currentRoot = currentRoot.left;
+            }
+        }
+        return null;
+    }
 }
