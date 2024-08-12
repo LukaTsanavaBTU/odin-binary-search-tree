@@ -10,7 +10,7 @@ function recursiveBuild(array, start, end) {
         return null;
     }
     const mid = Math.floor((start + end) / 2);
-    const root = new Node(mid);
+    const root = new Node(array[mid]);
     root.left = recursiveBuild(array, start, mid - 1);
     root.right = recursiveBuild(array, mid + 1, end);
     return root;
@@ -77,7 +77,18 @@ export default class Tree {
             currentRoot.data = replacementValue;
         }
     }
-    find (value) {
-        
-    }
+    // find (value) {
+    //     let currentRoot = this.root;
+    //     while (currentRoot) {
+    //         if (value === currentRoot.data) {
+    //             return currentRoot;
+    //         }
+    //         if (value > currentRoot.data) {
+    //             currentRoot = currentRoot.right;
+    //         } else {
+    //             currentRoot = currentRoot.left;
+    //         }
+    //     }
+    //     return null;
+    // }
 }
