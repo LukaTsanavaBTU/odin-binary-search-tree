@@ -19,5 +19,7 @@ bst.insert(325);
 bst.insert(326);
 bst.insert(327);
 prettyPrint(bst.root);
-bst.rebalance();
+bst.insert(-2);
+bst.insert(-4);
+bst.insert(-5);
 prettyPrint(bst.root);

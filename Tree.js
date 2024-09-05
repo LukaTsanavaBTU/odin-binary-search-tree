@@ -42,6 +42,9 @@ export default class Tree {
         } else {
             previousRoot.left = newNode;
         }
+        if (!this.isBalanced()) {
+            this.rebalance();
+        }
     }
     deleteItem(value) {
         let previousRoot;
@@ -75,6 +78,9 @@ export default class Tree {
             const replacementValue = replacementRoot.data;
             this.deleteItem(replacementValue);
             currentRoot.data = replacementValue;
+        }
+        if (!this.isBalanced()) {
+            this.rebalance();
         }
     }
     find (value) {
