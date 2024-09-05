@@ -108,4 +108,37 @@ export default class Tree {
             callback(currentRoot);
         }
     }
+    inOrder(callback, root = this.root) {
+        if (!callback) {
+            throw new Error("A callback function is required");
+        }
+        if(root === null) {
+            return;
+        }
+        this.inOrder(callback, root.left);
+        callback(root);
+        this.inOrder(callback, root.right);
+    }
+    postOrder(callback, root = this.root) {
+        if (!callback) {
+            throw new Error("A callback function is required");
+        }
+        if(root === null) {
+            return;
+        }
+        this.inOrder(callback, root.left);
+        this.inOrder(callback, root.right);
+        callback(root);
+    }
+    preOrder(callback, root = this.root) {
+        if (!callback) {
+            throw new Error("A callback function is required");
+        }
+        if(root === null) {
+            return;
+        }
+        callback(root);
+        this.inOrder(callback, root.left);
+        this.inOrder(callback, root.right);
+    }
 }
