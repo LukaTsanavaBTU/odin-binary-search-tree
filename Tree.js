@@ -142,6 +142,9 @@ export default class Tree {
         this.inOrder(callback, root.right);
     }
     height(node = this.root) {
+        if (!node) {
+            throw new Error("Node does not exist");
+        }
         let currentRoot = node;
         let height = 0;
         const queue = [currentRoot, null];
