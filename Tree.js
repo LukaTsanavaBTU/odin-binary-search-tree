@@ -147,11 +147,11 @@ export default class Tree {
         const queue = [currentRoot, null];
         while (queue.length !== 0) {
             currentRoot = queue.shift();
-            if (!currentRoot) {
+            if (!currentRoot && queue.length !== 0) {
                 height++;
-                if (queue.length !== 0) {
-                    queue.push(null);
-                }
+                queue.push(null);
+            } else if (!currentRoot && queue.length === 0) {
+                continue;
             }
             else {
                 if (currentRoot.left) {
@@ -164,4 +164,27 @@ export default class Tree {
         }
         return height;
     }
+    // depth(node) {
+    //     let currentRoot = this.root;
+    //     let depth = 0;
+    //     const queue = [currentRoot, null];
+    //     while (queue.length !== 0) {
+    //         currentRoot = queue.shift();
+    //         if (!currentRoot && queue.length !== 0) {
+    //             depth++;
+    //             queue.push(null);
+    //         } else if (currentRoot === node) {
+    //             return depth;
+    //         }
+    //         else {
+    //             if (currentRoot.left) {
+    //                 queue.push(currentRoot.left); 
+    //             }
+    //             if (currentRoot.right) {
+    //                 queue.push(currentRoot.right);
+    //             }
+    //         }
+    //     }
+    //     return depth;
+    // }
 }
