@@ -15,5 +15,9 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
 
 
 const bst = new Tree([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]);
+bst.insert(325);
+bst.insert(326);
+bst.insert(327);
 prettyPrint(bst.root);
-console.log(bst.isBalanced());
+bst.rebalance();
+prettyPrint(bst.root);

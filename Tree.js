@@ -204,4 +204,11 @@ export default class Tree {
             return false;
         } else {return true;}
     }
+    rebalance() {
+        const valsArr = [];
+        this.inOrder((node) => {
+            valsArr.push(node.data);
+        });
+        this.root = this.buildTree(valsArr);
+    }
 }
