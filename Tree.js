@@ -149,7 +149,7 @@ export default class Tree {
             currentRoot = queue.shift();
             if (!currentRoot) {
                 height++;
-                if (queue.length > 1) {
+                if (queue.length !== 0) {
                     queue.push(null);
                 }
             }
