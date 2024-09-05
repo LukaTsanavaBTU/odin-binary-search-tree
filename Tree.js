@@ -112,7 +112,7 @@ export default class Tree {
         if (!callback) {
             throw new Error("A callback function is required");
         }
-        if(root === null) {
+        if(!root) {
             return;
         }
         this.inOrder(callback, root.left);
@@ -123,7 +123,7 @@ export default class Tree {
         if (!callback) {
             throw new Error("A callback function is required");
         }
-        if(root === null) {
+        if(!root) {
             return;
         }
         this.inOrder(callback, root.left);
@@ -134,11 +134,34 @@ export default class Tree {
         if (!callback) {
             throw new Error("A callback function is required");
         }
-        if(root === null) {
+        if(!root) {
             return;
         }
         callback(root);
         this.inOrder(callback, root.left);
         this.inOrder(callback, root.right);
+    }
+    height(node = this.root) {
+        let currentRoot = node;
+        let height = 0;
+        const queue = [currentRoot, null];
+        while (queue.length !== 0) {
+            currentRoot = queue.shift();
+            if (!currentRoot) {
+                height++;
+                if (queue.length > 1) {
+                    queue.push(null);
+                }
+            }
+            else {
+                if (currentRoot.left) {
+                    queue.push(currentRoot.left); 
+                }
+                if (currentRoot.right) {
+                    queue.push(currentRoot.right);
+                }
+            }
+        }
+        return height;
     }
 }
